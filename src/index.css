@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --header-height: 4rem;
+    --sidebar-width: 16rem;
+    --sidebar-width-collapsed: 4rem;
+  }
+
+  html {
+    @apply antialiased;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (max-width: 640px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  body {
+    @apply font-sans text-base leading-relaxed bg-mono-50 text-mono-900;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display uppercase tracking-wide;
+  }
+
+  h1 {
+    @apply text-3xl lg:text-4xl mb-8;
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+
+  h2 {
+    @apply text-2xl lg:text-3xl mb-6;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+  }
+
+  h3 {
+    @apply text-xl lg:text-2xl mb-4;
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+  }
+
+  code, pre {
+    @apply font-mono;
+  }
+
+  a {
+    @apply transition-colors duration-200 hover:text-accent;
+  }
+
+  button {
+    @apply transition-all duration-200;
+  }
+}
+
+@layer components {
+  /* Layout Components */
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  }
+
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-sm p-4 sm:p-6 lg:p-8;
+  }
+
+  /* Form Components */
+  .form-input {
+    @apply w-full px-3 py-2 border border-mono-300 rounded-lg;
+    @apply focus:ring-2 focus:ring-mono-500 focus:border-mono-500;
+    @apply disabled:bg-mono-50 disabled:cursor-not-allowed;
+  }
+
+  .form-select {
+    @apply w-full px-3 py-2 border border-mono-300 rounded-lg;
+    @apply focus:ring-2 focus:ring-mono-500 focus:border-mono-500;
+    @apply disabled:bg-mono-50 disabled:cursor-not-allowed;
+  }
+
+  .form-checkbox {
+    @apply h-4 w-4 text-mono-900 focus:ring-mono-500 border-mono-300 rounded;
+  }
+
+  .form-radio {
+    @apply h-4 w-4 text-mono-900 focus:ring-mono-500 border-mono-300 rounded-full;
+  }
+
+  /* Button Components */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg;
+    @apply font-medium text-sm transition-colors duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-mono-900 text-white hover:bg-accent;
+    @apply focus:ring-mono-500;
+  }
+
+  .btn-secondary {
+    @apply bg-mono-100 text-mono-900 hover:bg-mono-200;
+    @apply focus:ring-mono-400;
+  }
+
+  .btn-outline {
+    @apply border border-mono-300 text-mono-700 hover:bg-mono-50;
+    @apply focus:ring-mono-500;
+  }
+
+  /* Navigation Components */
+  .nav-link {
+    @apply flex items-center px-3 py-2 rounded-lg text-sm font-medium;
+    @apply transition-colors duration-200;
+  }
+
+  .nav-link-active {
+    @apply bg-mono-900 text-white;
+  }
+
+  .nav-link-inactive {
+    @apply text-mono-600 hover:bg-mono-100;
+  }
+
+  /* Table Components */
+  .table-container {
+    @apply w-full overflow-x-auto;
+    @apply rounded-lg border border-mono-200;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table {
+    @apply min-w-full divide-y divide-mono-200;
+  }
+
+  .table th {
+    @apply px-6 py-3 text-left text-xs font-medium text-mono-500 uppercase tracking-wider;
+  }
+
+  .table td {
+    @apply px-6 py-4 whitespace-nowrap text-sm text-mono-900;
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    @apply fixed inset-0 z-50 lg:hidden;
+    @apply bg-mono-900 bg-opacity-50;
+  }
+
+  .mobile-menu-content {
+    @apply absolute top-0 left-0 w-64 h-full;
+    @apply bg-white shadow-xl;
+    @apply transform transition-transform duration-300;
+  }
+
+  .mobile-menu-enter {
+    transform: translateX(-100%);
+  }
+
+  .mobile-menu-enter-active {
+    transform: translateX(0);
+  }
+
+  .mobile-menu-exit {
+    transform: translateX(0);
+  }
+
+  .mobile-menu-exit-active {
+    transform: translateX(-100%);
+  }
+
+  /* Responsive Grid */
+  .grid-cols-responsive {
+    @apply grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: theme('spacing.6');
+  }
+
+  /* Responsive Typography */
+  .text-responsive {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    line-height: 1.5;
+  }
+
+  .heading-responsive {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    line-height: 1.2;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .touch-action-none {
+    touch-action: none;
+  }
+}

@@ -1,0 +1,352 @@
+/* Base Styles */
+:root {
+  --spacing-base: 1rem;
+  --max-width-sm: 640px;
+  --max-width-md: 768px;
+  --max-width-lg: 1024px;
+  --max-width-xl: 1280px;
+  --max-width-2xl: 1536px;
+}
+
+/* Fluid Typography */
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Fluid Typography Scale */
+:root {
+  --fluid-min-width: 320;
+  --fluid-max-width: 1920;
+  --fluid-min-size: 14;
+  --fluid-max-size: 18;
+  --fluid-min-scale: 1.2;
+  --fluid-max-scale: 1.333;
+}
+
+/* Responsive Typography */
+.text-fluid {
+  font-size: clamp(
+    var(--fluid-min-size)px,
+    calc(1rem + ((1vw - var(--fluid-min-width)px/100) * var(--fluid-max-size))),
+    var(--fluid-max-size)px
+  );
+}
+
+.heading-1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.2;
+}
+
+.heading-2 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  line-height: 1.3;
+}
+
+.heading-3 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  line-height: 1.4;
+}
+
+/* Grid System */
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--spacing-base);
+}
+
+/* Container */
+.container-responsive {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-base);
+  padding-right: var(--spacing-base);
+  max-width: var(--max-width-2xl);
+}
+
+/* Breakpoint-specific styles */
+@media (max-width: 767px) {
+  /* Mobile Styles */
+  .mobile-stack {
+    flex-direction: column !important;
+  }
+
+  .mobile-full-width {
+    width: 100% !important;
+  }
+
+  .mobile-hide {
+    display: none !important;
+  }
+
+  .mobile-text-center {
+    text-align: center !important;
+  }
+
+  .mobile-spacing {
+    margin-bottom: var(--spacing-base) !important;
+  }
+
+  /* Mobile Navigation */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .mobile-menu-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 80%;
+    max-width: 320px;
+    background-color: white;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .mobile-menu-closed .mobile-menu-content {
+    transform: translateX(-100%);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Tablet Styles */
+  .tablet-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .tablet-hide {
+    display: none !important;
+  }
+
+  .tablet-padding {
+    padding: calc(var(--spacing-base) * 1.5) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Desktop Styles */
+  .desktop-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)) !important;
+  }
+
+  .desktop-show {
+    display: block !important;
+  }
+
+  .desktop-padding {
+    padding: calc(var(--spacing-base) * 2) !important;
+  }
+}
+
+/* Touch Targets */
+@media (hover: none) and (pointer: coarse) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px;
+  }
+
+  .touch-spacing > * + * {
+    margin-top: 12px;
+  }
+}
+
+/* Responsive Tables */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 767px) {
+  .table-stack {
+    display: block;
+  }
+
+  .table-stack thead {
+    display: none;
+  }
+
+  .table-stack tr {
+    display: block;
+    margin-bottom: var(--spacing-base);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+  }
+
+  .table-stack td {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .table-stack td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    margin-right: 12px;
+  }
+}
+
+/* Responsive Images */
+.image-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.image-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive Forms */
+@media (max-width: 767px) {
+  .form-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .form-field {
+    margin-bottom: var(--spacing-base);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select,
+  textarea {
+    font-size: 16px !important; /* Prevent iOS zoom */
+    padding: 12px !important;
+  }
+}
+
+/* Responsive Cards */
+.card-responsive {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: var(--spacing-base);
+}
+
+@media (max-width: 767px) {
+  .card-responsive {
+    margin-bottom: var(--spacing-base);
+  }
+}
+
+/* Responsive Modals */
+.modal-responsive {
+  padding: var(--spacing-base);
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+@media (max-width: 767px) {
+  .modal-responsive {
+    width: 95%;
+    padding: calc(var(--spacing-base) / 2);
+    margin: 10px;
+  }
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.optimize-animation {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-break-inside {
+    page-break-inside: avoid;
+  }
+
+  .print-break-before {
+    page-break-before: always;
+  }
+}
+
+/* Utilities */
+.truncate-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Accessibility */
+@media (prefers-contrast: more) {
+  :root {
+    --color-text: #000000;
+    --color-background: #ffffff;
+  }
+}
+
+.focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Loading States */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.06) 25%,
+    rgba(0, 0, 0, 0.12) 37%,
+    rgba(0, 0, 0, 0.06) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/* Privacy Banner Animation */
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards;
+}

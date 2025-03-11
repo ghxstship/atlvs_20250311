@@ -1,0 +1,140 @@
+/* Base Button Styles */
+.btn {
+  @apply inline-flex items-center justify-center;
+  @apply px-4 py-2 rounded-lg;
+  @apply font-medium text-sm;
+  @apply transition-colors duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  white-space: nowrap;
+  min-width: 100px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Button Variants */
+.btn-primary {
+  @apply bg-mono-900 text-white hover:bg-accent;
+  @apply focus:ring-mono-500;
+}
+
+.btn-secondary {
+  @apply bg-mono-100 text-mono-700 hover:bg-mono-200;
+  @apply focus:ring-mono-400;
+}
+
+.btn-outline {
+  @apply border border-mono-300 text-mono-700 hover:bg-mono-50;
+  @apply focus:ring-mono-500;
+}
+
+.btn-danger {
+  @apply bg-red-600 text-white hover:bg-red-700;
+  @apply focus:ring-red-500;
+}
+
+/* Button Sizes */
+.btn-sm {
+  @apply px-3 py-1.5 text-xs min-w-[80px];
+}
+
+.btn-lg {
+  @apply px-6 py-3 text-base min-w-[120px];
+}
+
+/* Button with Icon */
+.btn-icon {
+  @apply inline-flex items-center;
+}
+
+.btn-icon svg {
+  @apply w-4 h-4;
+}
+
+.btn-icon.btn-sm svg {
+  @apply w-3.5 h-3.5;
+}
+
+.btn-icon.btn-lg svg {
+  @apply w-5 h-5;
+}
+
+/* Icon Spacing */
+.btn-icon svg:first-child {
+  @apply -ml-1 mr-2;
+}
+
+.btn-icon svg:last-child {
+  @apply -mr-1 ml-2;
+}
+
+/* Loading State */
+.btn-loading {
+  @apply relative text-transparent;
+}
+
+.btn-loading::after {
+  @apply absolute inset-0 flex items-center justify-center text-current;
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z'/%3E%3C/svg%3E");
+  animation: spin 1s linear infinite;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .btn {
+    @apply min-w-[80px];
+  }
+  
+  .btn-lg {
+    @apply px-4 py-2 text-sm min-w-[100px];
+  }
+}
+
+/* Button Groups */
+.btn-group {
+  @apply inline-flex;
+}
+
+.btn-group .btn:not(:first-child) {
+  @apply rounded-l-none -ml-px;
+}
+
+.btn-group .btn:not(:last-child) {
+  @apply rounded-r-none;
+}
+
+/* Full Width Button */
+.btn-full {
+  @apply w-full;
+}
+
+/* Hover and Focus States */
+@media (hover: hover) {
+  .btn:not(:disabled):hover {
+    @apply transform scale-[1.02] transition-transform;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+  .btn {
+    @apply border-2;
+  }
+  
+  .btn-primary {
+    @apply border-white;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    @apply transition-none transform-none;
+  }
+  
+  .btn-loading::after {
+    animation: none;
+  }
+}

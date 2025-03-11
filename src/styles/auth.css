@@ -1,0 +1,165 @@
+/* Base Styles */
+.auth-container {
+  @apply min-h-screen bg-mono-50 flex flex-col items-center justify-center py-8 px-4 sm:px-6 lg:px-8;
+}
+
+.auth-form-container {
+  @apply w-full max-w-md space-y-8;
+}
+
+.auth-card {
+  @apply bg-white px-8 py-10 rounded-lg shadow;
+}
+
+.auth-card-compact {
+  @apply bg-white px-8 py-6 rounded-lg shadow;
+}
+
+/* Typography */
+.auth-heading {
+  @apply text-3xl font-bold text-mono-900;
+}
+
+.auth-subheading {
+  @apply mt-2 text-lg text-mono-600;
+}
+
+/* Form Elements */
+.auth-input {
+  @apply w-full min-h-[48px] px-4 py-3 text-base;
+  @apply border border-mono-300 rounded-lg;
+  @apply focus:ring-2 focus:ring-mono-500 focus:border-mono-500;
+  @apply placeholder:text-mono-400;
+  @apply disabled:bg-mono-50 disabled:cursor-not-allowed;
+  @apply transition-colors duration-200;
+}
+
+.auth-label {
+  @apply block text-sm font-medium text-mono-700 mb-1;
+}
+
+.auth-error {
+  @apply mt-2 text-sm text-red-600;
+}
+
+/* Buttons */
+.auth-button {
+  @apply w-full min-h-[48px] px-6 py-3;
+  @apply flex items-center justify-center;
+  @apply text-base font-medium;
+  @apply rounded-lg transition-colors duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  white-space: nowrap;
+  min-width: 160px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.auth-button-primary {
+  @apply bg-mono-900 text-white hover:bg-accent;
+  @apply focus:ring-mono-500;
+}
+
+.auth-button-secondary {
+  @apply bg-mono-100 text-mono-900 hover:bg-mono-200;
+  @apply focus:ring-mono-400;
+}
+
+.auth-button-outline {
+  @apply border border-mono-300 text-mono-700 hover:bg-mono-50;
+  @apply focus:ring-mono-500;
+}
+
+/* Action Buttons */
+.auth-action-button {
+  @apply flex items-center px-6 py-3;
+  @apply bg-mono-100 text-mono-900 rounded-lg;
+  @apply hover:bg-mono-200 transition-colors;
+  white-space: nowrap;
+  min-width: 140px;
+}
+
+.auth-action-button svg {
+  @apply w-4 h-4 ml-2 flex-shrink-0;
+}
+
+/* Social Buttons */
+.auth-social-button {
+  @apply flex items-center justify-center;
+  @apply w-full min-h-[48px] px-6 py-3;
+  @apply border border-mono-300 rounded-lg;
+  @apply text-base font-medium text-mono-700;
+  @apply hover:bg-mono-50 transition-colors;
+  white-space: nowrap;
+}
+
+.auth-social-button svg {
+  @apply w-5 h-5 mr-3 flex-shrink-0;
+}
+
+/* Dividers */
+.auth-divider {
+  @apply relative my-6;
+}
+
+.auth-divider::before {
+  content: '';
+  @apply absolute inset-0 flex items-center;
+}
+
+.auth-divider::before {
+  @apply w-full border-t border-mono-200;
+}
+
+.auth-divider-text {
+  @apply relative flex justify-center text-sm text-mono-500;
+}
+
+.auth-divider-text span {
+  @apply px-2 bg-white;
+}
+
+/* Links */
+.auth-link {
+  @apply text-sm text-accent hover:text-accent-dark hover:underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .auth-button,
+  .auth-action-button {
+    @apply px-4 py-2;
+    min-width: 120px;
+  }
+
+  .auth-social-button {
+    @apply px-4;
+  }
+}
+
+/* Loading States */
+.auth-loading {
+  @apply opacity-75 cursor-wait;
+}
+
+.auth-spinner {
+  @apply animate-spin;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+  .auth-button-primary {
+    @apply border-2 border-white;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .auth-button,
+  .auth-action-button,
+  .auth-social-button {
+    @apply transition-none;
+  }
+}
